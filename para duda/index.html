@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para a Duda 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 20px auto;
+      max-width: 700px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    button {
+      background-color: #ff4e50;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #fc6771;
+    }
+
+    #surpresa {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #fffbe7;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px auto;
+      gap: 15px;
+      max-width: 900px;
+    }
+
+    .galeria img {
+      width: 250px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    .floating-heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      animation: float 6s infinite ease-in-out;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      z-index: 0;
+    }
+
+    .floating-heart::before,
+    .floating-heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .floating-heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .floating-heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-600px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .pergunta {
+      margin-top: 60px;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .botoes {
+      margin-top: 20px;
+    }
+
+    .botoes button {
+      margin: 10px;
+      font-size: 1.2em;
+    }
+
+    #respostaFinal {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #fffbe7;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oi, Duda 💕</h1>
+  <p>
+    Esse site é só uma pequena forma de mostrar o quanto você significa pra mim.  
+    Cada momento com você é único, e essas fotos são algumas lembranças lindas que guardo com carinho.  
+    Te amo demais! 💘
+  </p>
+
+  <div class="galeria">
+    <img src="foto1.jpeg" alt="Foto com Duda">
+    <img src="foto2.jpeg" alt="Duda com capacete">
+    <img src="foto3.jpeg" alt="Close da Duda com capacete">
+    <img src="foto4.jpeg" alt="Duda com filtro fofo">
+  </div>
+
+  <button onclick="mostrarSurpresa()">Clique aqui para uma surpresa</button>
+  <div id="surpresa"></div>
+
+  <div class="pergunta">Duda, você aceita ser minha eterna namorada? 💖</div>
+  <div class="botoes">
+    <button onclick="responderSim()">Sim 💍</button>
+    <button onclick="responderNao()">Não 😢</button>
+  </div>
+  <div id="respostaFinal"></div>
+
+  <script>
+    const elogios = [
+      "Você é mais linda que qualquer pôr do sol.",
+      "Seu sorriso é meu lugar favorito.",
+      "Duda, você ilumina tudo ao seu redor!",
+      "Te amar é como viver em poesia.",
+      "Você é meu sonho mais bonito.",
+      "Com você, todo dia é especial.",
+      "Seu carinho vale mais que ouro!",
+      "Você é a razão do meu melhor sorriso."
+    ];
+
+    function mostrarSurpresa() {
+      const index = Math.floor(Math.random() * elogios.length);
+      document.getElementById("surpresa").textContent = elogios[index];
+    }
+
+    function criarCoracoesExplosao() {
+      for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+
+    function responderSim() {
+      document.getElementById("respostaFinal").textContent = "Aaaah, eu sabia! 😍 Te amo, minha eterna Duda!";
+      criarCoracoesExplosao();
+    }
+
+    function responderNao() {
+      document.getElementById("respostaFinal").textContent = "😢 Vou tentar de novo com mais flores e brigadeiro...";
+    }
+
+    function criarCoracoes() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(criarCoracoes, 500);
+  </script>
+</body>
+</html>
